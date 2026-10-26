@@ -82,7 +82,7 @@
     if (heroRect.bottom>0) hero.style.setProperty('--scroll',clamp(-heroRect.top/heroRect.height));
     const filmRect=film.getBoundingClientRect();
     if (filmRect.top<height && filmRect.bottom>0) {
-      const entering=clamp((height-filmRect.top)/height);
+      const entering=clamp((height-filmRect.top)/(height*.8));
       const active=clamp(-filmRect.top/Math.max(1,filmRect.height-height));
       const mobile=window.innerWidth<=760;
       filmCanvas.style.setProperty('--film-inset',`${(1-entering)*(mobile?6:12)}%`);
@@ -150,8 +150,8 @@
   }));
 
   const films={
-    choice:{title:'The Choice',video:'CZ9Tlg5j8os',note:'An early film directed by Diyan Kinigama. Title treatment created for this website concept.'},
-    eath:{title:'Eat-h Other',video:'TiKAbPvgdYM',note:'A film study from the Biru notebook. Title treatment created for this website concept.'}
+    choice:{title:'The Choice',video:'CZ9Tlg5j8os',note:'Directed by Diyan Kinigama.'},
+    eath:{title:'Eat-h Other',video:'TiKAbPvgdYM',note:'A film experiment by Biru Films.'}
   };
   const dialog=document.querySelector('#film-dialog');
   document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',()=>{
